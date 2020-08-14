@@ -14,7 +14,7 @@ ${Request_URL}                  https://fxforms2-tst.fxcst.net
 ${api_key}                      DRF30J1k8aaWxG1EJ5Xdm99stxIiMOWA8g7yx9XF
 ${content_type}                 application/json
 ${open_link_event_type_id}      8
-${report_search_time_gap}       5 minutes       
+${report_search_time_gap}       10 minutes       
 
 *** Keywords ***
 Config_get unique id
