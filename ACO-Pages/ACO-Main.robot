@@ -70,8 +70,8 @@ Main_validate open link and respond result as [${open_link_id}] [${created_repor
     log to console      \n\nOpen link id: ${open_link_id}
     log to console      Genarated report id : ${created_report_id}
     log to console      Genarated report event type number : ${event_type_id}
-    log to console      Open link created date: ${request_open_time}
-    log to console      Genarated report created date : ${get_event_Date} \n
+    log to console      Open link created date time: ${request_open_time}
+    log to console      Report genarated date time : ${get_event_Date} \n
     Should Be Equal     ${open_link_id}     ${created_report_id}        
     Should Be Equal     ${event_type_id}     ${open_link_event_type_id}         Event type is not matching
 
