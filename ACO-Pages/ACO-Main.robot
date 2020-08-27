@@ -23,6 +23,7 @@ Main_Create open request [${client}] [${template}]
 
 Main_Run open request [${params}] and check response status [${response_status}]
     ${resp}=                Get Request    linkTracking        /open      params=${params}
+    sleep    2s
     Status Should Be        ${response_status}            ${resp}
     ${request_open_time} =	    Get From Dictionary	    ${resp.headers}	    date
     [return]      ${request_open_time}
