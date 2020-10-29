@@ -11,7 +11,7 @@ Resource          FETS-Pages/FETS-AWSHome.robot
 Resource          FETS-Pages/FETS-AWSSwitchRole.robot
 Resource          FETS-Pages/FETS-AWSBucket.robot
 Resource          FETS-Pages/FxForms.robot
-Library           CombineLibrary.py
+# Library           CombineLibrary.py
 Library           RequestsLibrary
 Library           Selenium2Library
 Library           Collections
