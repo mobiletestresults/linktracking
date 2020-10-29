@@ -47,7 +47,7 @@ AWSLogin_Open Chrome Browser To Login Page
     [Documentation]  for chrome browser
     ${server_url} =       Config_get XML element value    server-url
     ${now} =     Get Current Date       result_format=%Y%m%d%H%M%S
-    ${DOWNLOAD_DIRECTORY}      Join Path        ${partition_letter}:/JenkinsScreenshots/${ProjectFolderName}/screenshots/Downloads/Down_buildNo-${BuildNumber}-${now}-${browser}
+    ${DOWNLOAD_DIRECTORY}      Join Path        /Users/fxdmspmotestteam/JenkinsScreenshots/${ProjectFolderName}/screenshots/Downloads/Down_buildNo-${BuildNumber}-${now}-${browser}
     ${CHROME_OPTIONS}=      Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()   sys, selenium.webdriver
     ${disabled}     Create List     Chrome PDF Viewer
     ${prefs}         Create Dictionary   download.default_directory=${DOWNLOAD_DIRECTORY}    plugins.plugins_disabled=${disabled}    download.prompt_for_download=${false}

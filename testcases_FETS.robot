@@ -8,6 +8,7 @@ Resource          FETS-Common/FETS-Common.robot
 Test Teardown     Close All Browsers
 Suite Teardown    Config_Finalize the Executed Result
 
+
 *** Test Cases ***
 
 FxForm-001

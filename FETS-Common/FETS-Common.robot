@@ -15,7 +15,7 @@ ${v1}                           false
 ${v2}                           true
 ${partition_letter}             D
 # Project settings file location
-${XmlFile}                          ${partition_letter}:/JenkinsProjectsConfig/config.xml
+${XmlFile}                          /Users/fxdmspmotestteam/config/config.xml
 # running envirement
 ${envirement}                       tst
 # project
@@ -48,7 +48,7 @@ ${loop_count}                       2
 Config_Finalize the Executed Result
     ${myDate} =     Get Current Date    result_format=%Y%m%d%H%M%S
     #${project_name} =       Config_get XML element value    project-name
-    Wait Until Keyword Succeeds     1 min   1 sec   move files      ${EXECDIR}/*.png      ${partition_letter}:/JenkinsScreenshots/${ProjectFolderName}/screenshots/BuildNO-${BuildNumber}-${myDate}-${browser}
+    Wait Until Keyword Succeeds     1 min   1 sec   move files      ${EXECDIR}/*.png      /Users/fxdmspmotestteam/JenkinsScreenshots/${ProjectFolderName}/screenshots/BuildNO-${BuildNumber}-${myDate}-${browser}
     Wait Until Keyword Succeeds     1 min   1 sec   Close All Browsers
 
 Download should be done
