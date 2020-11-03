@@ -4,7 +4,7 @@ Documentation     A resource file with reusable keywords and variables.
 ...               The system specific keywords created here form our own
 ...               domain specific language. They utilize keywords provided
 ...               by the imported Selenium2Library.
-Library           Selenium2Library
+#Library           Selenium2Library
 Library           RequestsLibrary
 Library           Collections
 Library           String
@@ -17,11 +17,11 @@ ${partition_letter}             D
 # Project settings file location
 ${XmlFile}                          /Users/fxdmspmotestteam/config/config.xml
 # running envirement
-${envirement}                       tst
+${envirement}                       envb
 # project
-${project}                          linktracking
+${project}                          fxforms
 ${server}                           https://fxdmssharedservices.signin.aws.amazon.com/console
-${browser}                          chrome
+${browser}                          safari
 ${delay}                            .5 second
 ${ProjectFolderName}                linktracking_chrome
 ${BuildNumber}                      1
@@ -39,7 +39,7 @@ ${TargetDateFormatForDateRange}        %Y/%m/%d 12:00:00.000 AM
 #${api_key}                      X2Na0QuHef3UFSe1xq2tdpejMolrJk87ll9vJxGg
 ${open_link_event_type_id}      8
 ${report_search_time_gap}       5 minutes
-${loop_count}                       2
+${loop_count}                       1
 
 *** Keywords ***
 
@@ -49,7 +49,7 @@ Config_Finalize the Executed Result
     ${myDate} =     Get Current Date    result_format=%Y%m%d%H%M%S
     #${project_name} =       Config_get XML element value    project-name
     Wait Until Keyword Succeeds     1 min   1 sec   move files      ${EXECDIR}/*.png      /Users/fxdmspmotestteam/JenkinsScreenshots/${ProjectFolderName}/screenshots/BuildNO-${BuildNumber}-${myDate}-${browser}
-    Wait Until Keyword Succeeds     1 min   1 sec   Close All Browsers
+    Wait Until Keyword Succeeds     1 min   1 sec   Close All Applications
 
 Download should be done
     [Arguments]    ${directory}

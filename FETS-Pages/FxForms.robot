@@ -4,7 +4,8 @@ Documentation     A resource file with reusable keywords and variables.
 ...               The system specific keywords created here form our own
 ...               domain specific language. They utilize keywords provided
 ...               by the imported Selenium2Library.
-Library           Selenium2Library
+#Library           Selenium2Library
+Library           AppiumLibrary
 Library           OperatingSystem
 Library			  Collections
 Library           String
@@ -40,25 +41,26 @@ FxForm_execute all the links [${loop_count}]
 
 FxForm_Access link [${number}] [${loop_number}]
     ${server_url} =       Config_get XML element value    link${number}
-    Open Browser    ${server_url}    ${browser}
+    Open the Browser    ${server_url}    ${browser}
     sleep     2s
-    FxForm_page does not contain details [${loop_number}] [${number}]
-    FxForm_varify page contents
-    Close Browser
+    #FxForm_page does not contain details [${loop_number}] [${number}]
+    FxForm_varify page contents [${server_url}]
+    Close Application
 
+open the browser     [Arguments]        ${server_url}       ${browser} 
+    #${status}=      Run keyword and return status       open application	http://127.0.0.1:4723/wd/hub	automationName=XCUITest		xcodeSigningId=iPhone Developer		deviceName=iPhone 8		platformName=iOS		platformVersion=14.1	browserName=safari		startIWDP=true		newCommandTimeout=600
+    ${status}=      Run keyword and return status       open application	http://127.0.0.1:4723/wd/hub	browserName=safari      platformName=iOS    deviceName=iPhone 8     platformVersion=14.1    udid=0dc1d871a25ffcffe62eb09ea7e7649f83747968   newCommandTimeout=360   launchTimeout=30000     autoAcceptAlerts=true       webviewConnectRetries=12    webkitResponseTimeout=15000     startIWDP=true
+    Run Keyword If  '${status}'=='False'     open the browser      ${server_url}       ${browser}
+    go to url        ${server_url}
 
 FxForm_page does not contain details [${loop_number}] [${number}]
     ${status} =    run keyword and return status    run keyword and continue on failure    element should not be visible       xpath=//div[@class="row on-error page-active unknown-error"]
     run keyword if    '${status}' == 'False'        log to console    404 error (An error occurred while retrieving your information) loop : ${loop_number} link number : ${number}
-#    Wait Until Page Does Not Contain    An error occurred while retrieving your information.        10s     error=404 error (An error occurred while retrieving your information)
-#    Wait Until Page Does Not Contain    Please try the link you received again, or try again at a later time.       15s     error=404 error
 
-FxForm_varify page contents
-    title should be     QUU - Switch to eBilling
-#    Wait Until Page Contains        Thanks for making the simple, smart, sustainable switch to eBilling.
-#    Wait Until Page Contains        Please enter the postcode for your Sandstone Pl property in the field below.
-#    Wait Until Page Contains        Once we've verified this, you can update your details and preferences.
-    ${status1} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${txt_postcode}
-    ${status2} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${btn_verify}
+FxForm_varify page contents [${url}]
+    #${status1} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${txt_postcode}
+    #${status2} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${btn_verify}
+    ${status1} =    run keyword and return status       element should be visible       ${txt_postcode}
+    ${status2} =    run keyword and return status       element should be visible       ${btn_verify}
     run keyword if    '${status1}' == 'True' and '${status2}' == 'True'      log to console      Page successfully loaded.
-    run keyword and continue on failure    element should be visible       ${txt_postcode}
+    run keyword if    '${status1}' == 'False' and '${status2}' == 'False'      log to console      404 error (An error occurred while retrieving your information)\nError Url : ${url}
