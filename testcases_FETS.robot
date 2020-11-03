@@ -5,7 +5,7 @@ Documentation     A test suite with a single test for valid login.
 ...               the imported resource file.
 Resource          library_test.robot
 Resource          FETS-Common/FETS-Common.robot
-Test Teardown     Close All Browsers
+Test Teardown     Close All Applications
 Suite Teardown    Config_Finalize the Executed Result
 
 
