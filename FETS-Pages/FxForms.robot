@@ -43,7 +43,7 @@ FxForm_Access link [${number}] [${loop_number}]
     ${server_url} =       Config_get XML element value    link${number}
     Open the Browser    ${server_url}    ${browser}
     sleep     2s
-    #FxForm_page does not contain details [${loop_number}] [${number}]
+    FxForm_page does not contain details [${loop_number}] [${number}]
     FxForm_varify page contents [${server_url}]
     Close Application
 
@@ -54,8 +54,8 @@ open the browser     [Arguments]        ${server_url}       ${browser}
     go to url        ${server_url}
 
 FxForm_page does not contain details [${loop_number}] [${number}]
-    ${status} =    run keyword and return status    run keyword and continue on failure    element should not be visible       xpath=//div[@class="row on-error page-active unknown-error"]
-    run keyword if    '${status}' == 'False'        log to console    404 error (An error occurred while retrieving your information) loop : ${loop_number} link number : ${number}
+    ${status} =    run keyword and return status    run keyword and continue on failure    element should be visible       xpath=//div[@class="row on-error page-active unknown-error"]
+    run keyword if    '${status}' == 'True'        log to console    404 error (An error occurred while retrieving your information) loop : ${loop_number} link number : ${number}
 
 FxForm_varify page contents [${url}]
     #${status1} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${txt_postcode}
