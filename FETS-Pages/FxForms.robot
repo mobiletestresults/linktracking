@@ -63,4 +63,4 @@ FxForm_varify page contents [${url}]
     ${status1} =    run keyword and return status       element should be visible       ${txt_postcode}
     ${status2} =    run keyword and return status       element should be visible       ${btn_verify}
     run keyword if    '${status1}' == 'True' and '${status2}' == 'True'      log to console      Page successfully loaded.
-    run keyword if    '${status1}' == 'False' and '${status2}' == 'False'      log to console      404 error (An error occurred while retrieving your information)\nError Url : ${url}
+    run keyword if    '${status1}' == 'False' and '${status2}' == 'False'      log to console      Postcode text and verify button are not visible\nError Url : ${url}
