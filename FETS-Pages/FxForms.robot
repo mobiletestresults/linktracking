@@ -58,8 +58,6 @@ FxForm_page does not contain details [${loop_number}] [${number}]
     run keyword if    '${status}' == 'True'        log to console    404 error (An error occurred while retrieving your information) loop : ${loop_number} link number : ${number}
 
 FxForm_varify page contents [${url}]
-    #${status1} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${txt_postcode}
-    #${status2} =    run keyword and return status    run keyword and continue on failure    element should be visible       ${btn_verify}
     ${status1} =    run keyword and return status       element should be visible       ${txt_postcode}
     ${status2} =    run keyword and return status       element should be visible       ${btn_verify}
     run keyword if    '${status1}' == 'True' and '${status2}' == 'True'      log to console      Page successfully loaded.
